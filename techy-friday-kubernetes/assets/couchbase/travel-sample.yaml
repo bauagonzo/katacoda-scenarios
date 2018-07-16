@@ -1,0 +1,15 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: travel-sample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: travel-sample
+    spec:
+      containers:
+      - name: travel-sample
+        image: bauagonzo/cb-travel-sample:latest

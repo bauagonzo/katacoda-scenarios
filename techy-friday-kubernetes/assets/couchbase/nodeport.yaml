@@ -1,0 +1,13 @@
+# nodeport.yaml
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: travelsample
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 32000
+  selector:
+    name: travelsample

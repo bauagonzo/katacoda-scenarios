@@ -1,0 +1,84 @@
+From 48620395cfb1bd155f134119e76af0c18123847c Mon Sep 17 00:00:00 2001
+From: "baua.gonzo" <baua.gonzo@gmail.com>
+Date: Mon, 8 Oct 2018 17:23:41 +0200
+Subject: [PATCH 1/1] Kubernetes compatible
+
+---
+ travel.py | 50 ++++++++++++++++----------------------------------
+ 1 file changed, 16 insertions(+), 34 deletions(-)
+
+diff --git a/travel.py b/travel.py
+index 7d467de..7aceb2b 100644
+--- a/travel.py
++++ b/travel.py
+@@ -2,7 +2,6 @@ from datetime import datetime
+ import math
+ from random import random
+ import jwt  # from PyJWT
+-import argparse
+ 
+ from flask import Flask, request, jsonify, abort
+ from flask import make_response, redirect
+@@ -16,38 +15,21 @@ from couchbase.exceptions import NotFoundError, CouchbaseNetworkError, \
+ import couchbase.fulltext as FT
+ import couchbase.subdocument as SD
+ 
+-# For Couchbase Server 5.0 there must be a username and password
+-# User must have full access to read/write bucket/data and
+-# Read access for Query and Search
+-# Cluster Administrator user may be used
+-# CONNSTR = 'couchbase://localhost/travel-sample?username=admin'
+-# PASSWORD = 'admin123'
+-
+-DEFAULT_USER = "Administrator"
+-PASSWORD = 'password'
+-
+-# For Couchbase Server 4.6 the travel-sample bucket does not
+-# require username and password
+-# CONNSTR = 'couchbase://localhost/travel-sample'
+-# PASSWORD = ''
+-parser = argparse.ArgumentParser()
+-parser.add_argument('-c', '--cluster', help='Connection String i.e. localhost:8091')
+-parser.add_argument('-u', '--user', help='User with access to bucket')
+-parser.add_argument('-p', '--password', help='Password of user with access to bucket')
+-args = parser.parse_args()
+-
+-if args.cluster:
+-        CONNSTR = "couchbase://" + args.cluster + "/travel-sample"
+-else:
+-        CONNSTR = "couchbase://localhost/travel-sample"
+-if args.user:
+-        CONNSTR = CONNSTR + "?username=" + args.user
+-else:
+-        CONNSTR = CONNSTR + "?username=" + DEFAULT_USER
+-if args.password:
+-        PASSWORD = args.password
+-
+-print "Connecting to: " + CONNSTR
++from kubernetes import client, config
++
++config.load_incluster_config()
++v1 = client.CoreV1Api()
++print("Finding Couchbase Nodes:")
++ret = v1.list_pod_for_all_namespaces(watch=False)
++cbip = []
++for i in ret.items:
++    print("%s\t%s\t%s" %
++          (i.status.pod_ip, i.metadata.namespace, i.metadata.name))
++    if 'cb-example' in i.metadata.name:
++        cbip.append(i.status.pod_ip)
++
++CONNSTR = 'couchbase://' + cbip[0] + '/travel-sample'
++PASSWORD = ''
+ 
+ app = Flask(__name__, static_url_path='/static')
+ 
+@@ -299,4 +281,4 @@ def connect_db():
+ db = connect_db()
+ 
+ if __name__ == "__main__":
+-    app.run(debug=False, host='0.0.0.0', port=8080)
++    app.run(debug=False, host='localhost', port=8080)
+-- 
+2.17.1
+
