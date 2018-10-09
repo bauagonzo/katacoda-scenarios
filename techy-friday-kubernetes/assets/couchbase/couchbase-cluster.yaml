@@ -12,9 +12,9 @@ spec:
   cluster:
     dataServiceMemoryQuota: 256
     indexServiceMemoryQuota: 256
-    searchServiceMemoryQuota: 256
-    eventingServiceMemoryQuota: 256
-    analyticsServiceMemoryQuota: 1024
+#    searchServiceMemoryQuota: 64
+#    eventingServiceMemoryQuota: 64
+#    analyticsServiceMemoryQuota: 128
     indexStorageSetting: memory_optimized
     autoFailoverTimeout: 120
     autoFailoverMaxCount: 3
@@ -24,7 +24,7 @@ spec:
   buckets:
     - name: default
       type: couchbase
-      memoryQuota: 128
+      memoryQuota: 100
       replicas: 1
       ioPriority: high
       evictionPolicy: fullEviction
@@ -38,6 +38,6 @@ spec:
         - data
         - index
         - query
-        - search
-        - eventing
-        - analytics
+#        - search
+#        - eventing
+#        - analytics

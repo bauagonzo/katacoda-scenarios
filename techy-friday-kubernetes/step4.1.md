@@ -38,18 +38,19 @@ Check everything is started properly with
 `kubectl get pods`{{execute HOST2}}
 
 Import dataset (TODO use a job)
+
 `kubectl exec cb-example-0000 -ti bash`{{execute HOST1}}
 
 `/opt/couchbase/bin/cbimport json -c 127.0.0.1:8091 -u Administrator -p password -b travel-sample -f sample -d /opt/couchbase/samples/travel-sample.zip`{{execute HOST1}}
 
 ### Create the web service with travel-app
 
-`kubectl create -f travel-sample.yaml`{{execute HOST1}}
+`kubectl create -f travel-sample.yaml`{{execute HOST2}}
 
 Expose the port to the world
 `kubectl create -f nodeport.yaml`{{execute HOST2}}
 
-We can now access the app through : https://[[HOST1_SUBDOMAIN]]-32000-[[KATACODA_HOST]].environments.katacoda.com/
+We can now access the app through : https://[[HOST2_SUBDOMAIN]]-32000-[[KATACODA_HOST]].environments.katacoda.com/
 ## Docker bonus
 
 Tweak the travel-app sample to use

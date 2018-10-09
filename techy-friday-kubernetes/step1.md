@@ -11,6 +11,8 @@ The command below will initialise the cluster with a known token to simplify the
 In production, it's recommend to exclude the token causing kubeadm to generate one on your behalf.
 
 ## Notes
+`docker pull couchbase/server:enterprise-5.5.1 ; docker pull bauagonzo/cb-travel-sample:latest`{{execute HOST2}}
+
 https://[[HOST1_SUBDOMAIN]]-32000-[[KATACODA_HOST]].environments.katacoda.com/
 
 https://[[HOST2_SUBDOMAIN]]-32000-[[KATACODA_HOST]].environments.katacoda.com/
