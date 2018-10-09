@@ -17,8 +17,6 @@ The Kubernetes CLI, known as _kubectl_, can now use the configuration to access 
 
 Let's share the configuration with the other node
 
-`cat /etc/kubernetes/admin.conf`{{execute HOST1}}
-
 `scp /etc/kubernetes/admin.conf root@node01:~`{{execute HOST1}}
 
 `kubectl --kubeconfig ./admin.conf get nodes`{{execute HOST2}}
@@ -26,4 +24,5 @@ Let's share the configuration with the other node
 `export KUBECONFIG=$HOME/admin.conf`{{execute HOST2}}
 
 
-At this point, the Nodes may not be ready. This is because the Container Network Interface has not been deployed. This will be fixed within the next step.
+At this point, the Nodes may not be ready. This is because the Container Network Interface has not been deployed.
+`kubectl describe node master | grep Ready`{{execute HOST1}}

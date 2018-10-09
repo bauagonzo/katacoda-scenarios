@@ -6,7 +6,7 @@ Get the couchbase-operator utils
 
 `curl -LO https://github.com/bauagonzo/katacoda-scenarios/raw/master/techy-friday-kubernetes/assets/couchbase/bin/cbopinfo`{{execute HOST1}}
 
-`chmod +x cbop* && mv cbop* /usr/bin`
+`chmod +x cbop* && mv cbop* /usr/bin`{{execute HOST1}}
 
 `cd couchbase`{{execute HOST1}}
 
@@ -37,15 +37,17 @@ Check everything is started properly with
 
 `kubectl get pods`{{execute HOST2}}
 
-Import dataset
-`kubectl exec pod cb-example-0000 -ti /opt/couchbase/bin/cbimport json -c 127.0.0.1:8091 -u Administrator -p password -b travel-sample -f sample -d /opt/couchbase/samples/travel-sample.zip`{{execute HOST1}}
+Import dataset (TODO use a job)
+`kubectl exec cb-example-0000 -ti bash`{{execute HOST1}}
+
+`/opt/couchbase/bin/cbimport json -c 127.0.0.1:8091 -u Administrator -p password -b travel-sample -f sample -d /opt/couchbase/samples/travel-sample.zip`{{execute HOST1}}
 
 ### Create the web service with travel-app
 
 `kubectl create -f travel-sample.yaml`{{execute HOST1}}
 
 Expose the port to the world
-`kubectl create -f nodeport.yaml`{{execute HOST2}
+`kubectl create -f nodeport.yaml`{{execute HOST2}}
 
 We can now access the app through : https://[[HOST1_SUBDOMAIN]]-32000-[[KATACODA_HOST]].environments.katacoda.com/
 ## Docker bonus
