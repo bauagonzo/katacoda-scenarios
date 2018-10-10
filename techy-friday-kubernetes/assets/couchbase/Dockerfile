@@ -23,6 +23,7 @@ RUN pip install paramiko &&\
     pip install boto &&\
     pip install httplib2 &&\
     pip install pyyaml &&\
+    pip install kubernetes &&\
     pip install couchbase
 RUN pip install -r requirements.txt
 COPY entrypoint.sh entrypoint.sh
