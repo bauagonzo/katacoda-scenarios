@@ -28,3 +28,18 @@ spec:
       containers:
       - name: travel-sample
         image: bauagonzo/cb-travel-sample:latest
+         ports:
+        - containerPort: 8080
+# nodeport.yaml
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: travel-sample
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 33000
+  selector:
+    name: travel-sample
