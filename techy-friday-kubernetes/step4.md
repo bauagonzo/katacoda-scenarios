@@ -14,6 +14,3 @@ When installing Weave on your cluster, visit https://www.weave.works/docs/net/la
 
 The nodes should now be ready
 `kubectl get nodes`{{execute HOST1}}
-
-## Bonus to save time
-`docker pull couchbase/server:enterprise-5.5.1`{{execute HOST2}}

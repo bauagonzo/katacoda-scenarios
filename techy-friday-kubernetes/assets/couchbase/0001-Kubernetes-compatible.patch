@@ -16,13 +16,13 @@ index 7d467de..7aceb2b 100644
  from random import random
  import jwt  # from PyJWT
 -import argparse
- 
+
  from flask import Flask, request, jsonify, abort
  from flask import make_response, redirect
 @@ -16,38 +15,21 @@ from couchbase.exceptions import NotFoundError, CouchbaseNetworkError, \
  import couchbase.fulltext as FT
  import couchbase.subdocument as SD
- 
+
 -# For Couchbase Server 5.0 there must be a username and password
 -# User must have full access to read/write bucket/data and
 -# Read access for Query and Search
@@ -68,17 +68,17 @@ index 7d467de..7aceb2b 100644
 +    if 'cb-example' in i.metadata.name:
 +        cbip.append(i.status.pod_ip)
 +
-+CONNSTR = 'couchbase://' + cbip[0] + '/travel-sample'
-+PASSWORD = ''
- 
++CONNSTR = 'couchbase://' + cbip[0] + '/travel-sample?username=Administrator'
++PASSWORD = 'password'
+
  app = Flask(__name__, static_url_path='/static')
- 
+
 @@ -299,4 +281,4 @@ def connect_db():
  db = connect_db()
- 
+
  if __name__ == "__main__":
 -    app.run(debug=False, host='0.0.0.0', port=8080)
 +    app.run(debug=False, host='localhost', port=8080)
--- 
+--
 2.17.1
 
