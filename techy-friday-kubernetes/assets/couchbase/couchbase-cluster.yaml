@@ -24,7 +24,7 @@ spec:
   buckets:
     - name: default
       type: couchbase
-      memoryQuota: 100
+      memoryQuota: 256
       replicas: 1
       ioPriority: high
       evictionPolicy: fullEviction
@@ -32,7 +32,7 @@ spec:
       enableFlush: true
       enableIndexReplica: false
   servers:
-    - size: 1
+    - size: 2
       name: all_services
       services:
         - data
