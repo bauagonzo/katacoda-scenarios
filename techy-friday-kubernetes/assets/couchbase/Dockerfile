@@ -26,6 +26,5 @@ RUN pip install paramiko &&\
     pip install couchbase
 RUN pip install -r requirements.txt
 COPY entrypoint.sh entrypoint.sh
-COPY travel-sample-flo.zip /opt/couchbase/samples/travel-sample-flo.zip
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["sh", "entrypoint.sh"]

@@ -19,3 +19,5 @@ Note that the persistent local volume is only accessible by the master node. For
 ## Bonus
 
 FC configuration
+
+`cat local-fc.yaml`{{execute HOST1}}

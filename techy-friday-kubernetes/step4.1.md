@@ -40,8 +40,9 @@ Check everything is started properly with
 Import dataset (TODO use a job)
 
 `kubectl exec cb-example-0000 -ti bash`{{execute HOST1}}
-
-`/opt/couchbase/bin/cbimport json -c 127.0.0.1:8091 -u Administrator -p password -b travel-sample -f sample -d /opt/couchbase/samples/travel-sample-flo.zip`{{execute HOST1}}
+`cbc-bucket-create toto  -u Administrator -P password`{{execute HOST1}}
+`curl -LO https://github.com/bauagonzo/katacoda-scenarios/raw/master/techy-friday-kubernetes/assets/couchbase/travel-sample-flo.zip`{{execute HOST1}}
+`/opt/couchbase/bin/cbimport json -c 127.0.0.1:8091 -u Administrator -p password -b travel-sample -f sample -d ~/travel-sample-flo.zip`
 
 ### Create the web service with travel-app
 

@@ -52,6 +52,7 @@
             {"file": "dashboard.yaml", "target": "/root"},
             {"file": "deployment.yaml", "target": "/root"},
             {"file": "volumes/local/local-pv.yaml", "target": "/root"},
+            {"file": "volumes/fiber_channel/fc.yaml", "target": "/root"},
             {"file": "couchbase/travel-sample.yaml", "target": "/root/couchbase"},
             {"file": "couchbase/cluster-role.yaml", "target": "/root/couchbase"},
             {"file": "couchbase/couchbase-cli-create-user.yaml", "target": "/root/couchbase"},
