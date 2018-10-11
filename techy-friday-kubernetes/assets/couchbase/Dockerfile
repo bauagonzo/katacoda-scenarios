@@ -14,7 +14,6 @@ RUN git clone --branch 5.0 https://github.com/couchbaselabs/try-cb-python.git
 WORKDIR try-cb-python
 COPY 0001-Kubernetes-compatible.patch 0001-Kubernetes-compatible.patch
 RUN git apply 0001-Kubernetes-compatible.patch
-RUN cat travel.py
 # install python deps
 RUN pip2 install --upgrade packaging appdirs
 RUN pip install -U pip setuptools
@@ -27,5 +26,6 @@ RUN pip install paramiko &&\
     pip install couchbase
 RUN pip install -r requirements.txt
 COPY entrypoint.sh entrypoint.sh
+COPY travel-sample-flo.zip /opt/couchbase/samples/travel-sample-flo.zip
 RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["sh", "entrypoint.sh"]

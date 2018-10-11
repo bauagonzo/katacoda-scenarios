@@ -78,7 +78,7 @@ index 7d467de..7aceb2b 100644
 
  if __name__ == "__main__":
 -    app.run(debug=False, host='0.0.0.0', port=8080)
-+    app.run(debug=False, host='localhost', port=8080)
++    app.run(debug=False, host='0.0.0.0', port=8080)
 --
 2.17.1
 

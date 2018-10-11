@@ -31,16 +31,8 @@
                 "text": "step4.1.md"
             },
             {
-                "title": "Step 7 - Configure travel-app",
-                "text": "step4.1.md"
-            },
-            {
-                "title": "Step 5 - Deploy Pod",
+                "title": "Step 5 - Deploy Pod webserver",
                 "text": "step5.md"
-            },
-            {
-                "title": "Step 6 - Work Remotely",
-                "text": "step6.md"
             },
             {
                 "title": "Step 7 - Deploy Dashboard",
