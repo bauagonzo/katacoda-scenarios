@@ -46,7 +46,7 @@ Import dataset (TODO use a job)
 ### Create the web service with travel-app
 
 Gives the rights to communicate with other containers, deploy the container, expose the port to the world
-`vi couchbase/travel-sample.yaml`{{execute HOST1}}
+`vi couchbase/travel-sample.yaml`{{execute HOST2}}
 
 `kubectl create -f couchbase/travel-sample.yaml`{{execute HOST2}}
 

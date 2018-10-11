@@ -4,6 +4,9 @@ The first stage of initialising the cluster is to launch the master node. The ma
 
 ## Task
 
+Pre-requisites:
+`ssh node01`{{execute HOST1}}
+
 The command below will initialise the cluster with a known token to simplify the following steps.
 
 `kubeadm init --token=102952.1a7dd4cc8d1f4cc5`{{execute HOST1}}
@@ -12,3 +15,8 @@ In production, it's recommend to exclude the token causing kubeadm to generate o
 
 ## Bonus to save time
 `docker pull couchbase/server:enterprise-5.5.1 ; docker pull bauagonzo/cb-travel-sample:latest`{{execute HOST2}}
+
+
+`curl -LO https://github.com/bauagonzo/katacoda-scenarios/raw/master/techy-friday-kubernetes/assets/couchbase/bin/cbopctl ; curl -LO https://github.com/bauagonzo/katacoda-scenarios/raw/master/techy-friday-kubernetes/assets/couchbase/bin/cbopinfo`{{execute HOST1}}
+
+`chmod +x cbop* && mv cbop* /usr/bin`{{execute HOST1}}

@@ -15,3 +15,7 @@ PV and PVC can be provisioned statically (like below) or dynamically.
 `kubectl get persistentvolume`{{execute HOST2}}
 
 Note that the persistent local volume is only accessible by the master node. For real shared storage we should use another storage provider with such capabilities.
+
+## Bonus
+
+FC configuration

@@ -24,7 +24,7 @@ spec:
   buckets:
     - name: default
       type: couchbase
-      memoryQuota: 256
+      memoryQuota: 156
       replicas: 1
       ioPriority: high
       evictionPolicy: fullEviction

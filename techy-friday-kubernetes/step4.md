@@ -14,3 +14,4 @@ When installing Weave on your cluster, visit https://www.weave.works/docs/net/la
 
 The nodes should now be ready
 `kubectl get nodes`{{execute HOST1}}
+
